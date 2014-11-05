@@ -5,4 +5,4 @@ Features to be added to this README soon.
 - Part of the projects curriculum at [Bloc][1].
 
 
-[1]: http://www.bloc,io
+[1]: http://www.bloc.io
