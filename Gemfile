@@ -14,6 +14,11 @@ group :development do
   gem 'better_errors'
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+end
+
 # Use Unicorn as the new server
 gem 'unicorn'
 
