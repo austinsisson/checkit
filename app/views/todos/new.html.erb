@@ -1,0 +1,7 @@
+<h1>New Page!</h1>
+
+<%= form_for Todo.new do |f| %>
+	<%= f.text_field :description, placeholder: 'Description' %>
+	<%= f.submit 'Save', class: 'btn btn-primary' %>
+<% end %>
+

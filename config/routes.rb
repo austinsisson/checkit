@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  resources :lists, only: [:new, :create, :show]
+  resources :todos, only: [:new, :create, :show]
   
   
   get 'about' => 'welcome#about'
