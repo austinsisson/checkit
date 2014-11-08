@@ -4,9 +4,10 @@ class TodosController < ApplicationController
   end
   
   def create
-    @todo = Todo.new(todo_params)
+    @user = User.find(params[:user_id])
+    @todo = @user.todos.new(todo_params)
     @todo.save
-    redirect_to @todo, notice: 'Your new to-do was saved!'
+    redirect_to @user, notice: 'Your new to-do was saved!'
   end
   
   def show

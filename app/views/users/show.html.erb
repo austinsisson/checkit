@@ -1,4 +1,18 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
 
-<%= @user.todos %>
+<h1>Welcome!</h1>
+<p>Below is what you need to do.</p>
+<br/>
+
+<% @todo.each do |todo| %>
+	<%= todo.description %>
+<% end %>
+
+<br/><br/>
+<p>What else do you need to do?<p>
+
+
+
+<%= form_for [@user, @todo.new] do |f| %>
+	<%= f.text_field :description, placeholder: 'Description' %>
+	<%= f.submit 'Save', class: 'btn btn-primary' %>
+<% end %>
