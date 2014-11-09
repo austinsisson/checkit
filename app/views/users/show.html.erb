@@ -3,7 +3,7 @@
 <p>Below is what you need to do.</p>
 <br/>
 
-<% @todo.each do |todo| %>
+<% @todos.each do |todo| %>
 	<%= todo.description %>
 <% end %>
 
@@ -12,7 +12,7 @@
 
 
 
-<%= form_for [@user, @todo.new] do |f| %>
+<%= form_for [@user, @todo] do |f| %>
 	<%= f.text_field :description, placeholder: 'Description' %>
 	<%= f.submit 'Save', class: 'btn btn-primary' %>
 <% end %>
