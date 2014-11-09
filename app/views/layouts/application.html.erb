@@ -10,6 +10,14 @@
 		<p><%= flash[:notice] if flash[:notice] %></p>
 		<p><%= flash[:alert] if flash[:alert] %></p>
 		
+		<div class="navbar navbar-default">
+   			<ul class="nav navbar-nav">
+   				<li><%= link_to "CheckIt", root_path %></li>
+   				<li><%= link_to "Sign In", new_user_session_path %></li>
+      			<li><%= link_to "Sign Up", new_user_registration_path %></li>
+  			</ul>
+  		</div>
+		
 		<%= yield %>
 
 	</body>

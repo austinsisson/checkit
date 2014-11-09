@@ -19,6 +19,7 @@ group :development, :test do
   gem 'capybara'
 end
 
+gem 'bootstrap-sass'
 gem 'unicorn'
 gem 'newrelic_rpm'
 gem 'sass-rails', '~> 4.0.3'
