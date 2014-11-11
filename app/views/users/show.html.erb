@@ -3,8 +3,10 @@
 <p>Below is what you need to do.</p>
 <br/>
 
-<% @todos.each do |todo| %>
-	<%= todo.description %>
+<% @user.todos.each do |todo| %>
+	<p><%= todo.description %></p>
+	<p><%= check_box_tag 'completed', todo.id, todo.completed %></p>
+	<p><%= link_to "Delete to-do", user_todo_path(todo.user, todo), method: :delete %></p>
 <% end %>
 
 <br/><br/>
@@ -12,7 +14,7 @@
 
 
 
-<%= form_for [@user, @todo] do |f| %>
+<%= form_for [@user, @user.todos.build] do |f| %>
 	<%= f.text_field :description, placeholder: 'Description' %>
 	<%= f.submit 'Save', class: 'btn btn-primary' %>
 <% end %>

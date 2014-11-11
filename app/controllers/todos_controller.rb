@@ -13,12 +13,24 @@ class TodosController < ApplicationController
   end
   
   def show
-    @todo = Todo.find params[:id]
+  end
+  
+  def destroy
+    @user = User.find(params[:user_id])
+    @todo = @user.todos.find(params[:id])
+    
+    if @todo.destroy
+      flash[:notice] = "to-do deleted!"
+    else
+      flash[:error] = "An error occurred, please try again."
+    end
+    
+    redirect_to @user
   end
   
   private
   
   def todo_params
-    params.require(:todo).permit(:description)
+    params.require(:todo).permit(:description, :completed)
   end
 end

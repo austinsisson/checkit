@@ -10,9 +10,6 @@ class UsersController < ApplicationController
       @user = current_user
     end
     
-    @todos = @user.todos
-    @todo = @todos.new
-    
     unless @user == current_user
       redirect_to root_path, alert: 'Sorry, you can only view your own to-do lists!'
     end
