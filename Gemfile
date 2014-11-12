@@ -33,4 +33,5 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'figaro'
 gem 'faker'
-
+gem 'whenever'
+gem 'time_diff'

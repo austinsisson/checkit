@@ -6,7 +6,8 @@
 <% @user.todos.each do |todo| %>
 	<p><%= todo.description %></p>
 	<p><%= check_box_tag 'completed', todo.id, todo.completed %></p>
-	<p><%= link_to "Delete to-do", user_todo_path(todo.user, todo), method: :delete %></p>
+	<p><%= link_to "Delete", user_todo_path(todo.user, todo), method: :delete %></p>
+	<p>Expires in <%= todo.time_left %></p>
 <% end %>
 
 <br/><br/>
