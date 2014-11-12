@@ -7,19 +7,35 @@
   	<%= csrf_meta_tags %>
 	</head>
 	<body>
-		<p><%= flash[:notice] if flash[:notice] %></p>
-		<p><%= flash[:alert] if flash[:alert] %></p>
+		<div class="container">
+			<div class="navbar navbar-default">
+   				<ul class="nav navbar-nav">
+   					<li><%= link_to "CheckIt", root_path %></li>
+   					<li><%= link_to "Sign In", new_user_session_path %></li>
+      				<li><%= link_to "Sign Up", new_user_registration_path %></li>
+      				<li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+  				</ul>
+  			</div>
+  		
+  			<% if flash[:notice] %>
+				<div class="alert alert-success">
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+					<%= flash[:notice] %>
+				</div>
+			<% elsif flash[:error] %>
+				<div class="alert alert-danger">
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+					<%= flash[:error] %>
+				</div>
+			<% elsif flash[:alert] %>
+				<div class="alert alert-warning">
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+					<%= flash[:alert] %>
+				</div>
+			<% end %>
 		
-		<div class="navbar navbar-default">
-   			<ul class="nav navbar-nav">
-   				<li><%= link_to "CheckIt", root_path %></li>
-   				<li><%= link_to "Sign In", new_user_session_path %></li>
-      			<li><%= link_to "Sign Up", new_user_registration_path %></li>
-      			<li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-  			</ul>
-  		</div>
-		
-		<%= yield %>
+			<%= yield %>
 
+		</div>
 	</body>
 </html>

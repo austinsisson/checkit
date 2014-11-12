@@ -8,8 +8,14 @@ class TodosController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @todo = @user.todos.new(todo_params)
-    @todo.save
-    redirect_to @user, notice: 'Your new to-do was saved!'
+    
+    if @todo.save
+      flash[:notice] = 'Your new to-do was saved!'
+    else
+      flash[:error] = "An error occurred, please try again."
+    end
+    
+    redirect_to @user
   end
   
   def show
@@ -20,7 +26,20 @@ class TodosController < ApplicationController
     @todo = @user.todos.find(params[:id])
     
     if @todo.destroy
-      flash[:notice] = "to-do deleted!"
+      flash[:notice] = "Your to-do was deleted!"
+    else
+      flash[:error] = "An error occurred, please try again."
+    end
+    
+    redirect_to @user
+  end
+  
+  def update
+    @user = User.find(params[:user_id])
+    @todo = @user.todos.find(params[:id])
+    
+    if @todo.update_attributes(todo_params)
+      flash[:notice] = "Your to-do has been completed!"
     else
       flash[:error] = "An error occurred, please try again."
     end
