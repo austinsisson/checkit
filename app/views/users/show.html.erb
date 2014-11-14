@@ -16,9 +16,9 @@
 		</tr>
 		<% @user.todos.each do |todo| %>
 			<tr>
-				<td><%= todo.description %></td>
-				<td><%= todo.time_left %></td>
-				<td><%= link_to('Complete this task', user_todo_path(todo.user, todo, :todo => { :completed => true}), method: :put, class: 'btn btn-info', data: {confirm: 'Are you sure want to mark this to-do as completed?'})%></td>
+				<td id="todo-description"><%= todo.description %></td>
+				<td id="todo-time_left"><%= todo.time_left %></td>
+				<td id="todo-complete"><%= link_to 'Complete this task', user_todo_path(todo.user, todo, :todo => { :completed => true}), method: :put, class: 'btn btn-info', remote: true %></td>
 				<td><%= link_to "Delete", user_todo_path(todo.user, todo), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this to-do?' } %></td>
 			</tr>
 		<% end %>

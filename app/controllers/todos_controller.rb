@@ -1,5 +1,7 @@
 class TodosController < ApplicationController
   
+  respond_to :html, :js
+  
   before_action :authenticate_user!
   
   def new
@@ -44,7 +46,9 @@ class TodosController < ApplicationController
       flash[:error] = "An error occurred, please try again."
     end
     
-    redirect_to @user
+    respond_with(@todo) do |format|
+      format.html { redirect_to @todo }
+    end
   end
   
   private
