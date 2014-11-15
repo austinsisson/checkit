@@ -7,23 +7,30 @@
 </div>
 
 <div class="row">
-	<table class="table table-hover">
+	<table class="table">
 		<tr>
 			<th>To-Do</th>
 			<th>Time Left</th>
-			<th>Finish</th>
+			<th>Complete To-Do</th>
 			<th>Remove</th>
 		</tr>
 		<% @user.todos.each do |todo| %>
-			<tr>
-				<td id="todo-description"><%= todo.description %></td>
-				<td id="todo-time_left"><%= todo.time_left %></td>
-				<td id="todo-complete"><%= link_to 'Complete this task', user_todo_path(todo.user, todo, :todo => { :completed => true}), method: :put, class: 'btn btn-info', remote: true %></td>
+			<% if !todo.completed? %>
+			<tr id="todo-row-<%= todo.id %>">
+				<td id="todo-description-<%= todo.id %>"><%= todo.description %></td>
+				<td id="todo-time_left-<%= todo.id %>"><%= todo.time_left %></td>
+				<td id="todo-complete-<%= todo.id %>"><%= link_to 'Complete this task', user_todo_path(todo.user, todo, :todo => { :completed => true}), method: :put, class: 'btn btn-info', remote: true %></td>
 				<td><%= link_to "Delete", user_todo_path(todo.user, todo), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this to-do?' } %></td>
+			<% else %>
+				<td><s><%= todo.description %></s></td>
+				<td><p>Complete!</p></td>
+				<td><p>Complete!</p></td>
+				<td><%= link_to "Delete", user_todo_path(todo.user, todo), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this to-do?' } %></td>
+			<% end %>
 			</tr>
 		<% end %>
 	</table>
-<br/>
+</div>
 <div class="row">
 	<div class="col-md-3 center-block">
 		<p>What else do you need to do?</p>

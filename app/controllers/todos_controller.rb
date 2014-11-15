@@ -47,7 +47,7 @@ class TodosController < ApplicationController
     end
     
     respond_with(@todo) do |format|
-      format.html { redirect_to @todo }
+      format.html { redirect_to @user }
     end
   end
   
