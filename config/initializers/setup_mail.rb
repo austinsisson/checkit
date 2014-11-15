@@ -1,6 +1,6 @@
-if Rails.env.development?
-  ActionMailer::Base.delivery_method = :smtp
-  ActionMailer::Base.smtp_settings = {
+config.action_mailer.default_url_options = { :host => 'checkit-sisson.herokuapp.com' }
+ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.smtp_settings = {
     address:          'smtp.sendgrid.net',
     port:             '587',
     authentication:   :plain,
@@ -8,5 +8,4 @@ if Rails.env.development?
     password:          ENV['SENDGRID_PASSWORD'],
     domain:           'heroku.com',
     enable_starttls_auto:      :true
-  }
-end
+}
