@@ -16,7 +16,7 @@
 		</tr>
 		<% @user.todos.each do |todo| %>
 			<% if !todo.completed? %>
-			<tr id="todo-row-<%= todo.id %>">
+			<tr>
 				<td id="todo-description-<%= todo.id %>"><%= todo.description %></td>
 				<td id="todo-time_left-<%= todo.id %>"><%= todo.time_left %></td>
 				<td id="todo-complete-<%= todo.id %>"><%= link_to 'Complete this task', user_todo_path(todo.user, todo, :todo => { :completed => true}), method: :put, class: 'btn btn-info', remote: true %></td>
