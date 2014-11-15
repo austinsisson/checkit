@@ -17,7 +17,7 @@ class TodosController < ApplicationController
       flash[:error] = "An error occurred, please try again."
     end
     
-    redirect_to @user
+    redirect_to root_path
   end
   
   def show
@@ -33,21 +33,17 @@ class TodosController < ApplicationController
       flash[:error] = "An error occurred, please try again."
     end
     
-    redirect_to @user
+    redirect_to root_path
   end
   
   def update
     @user = User.find(params[:user_id])
     @todo = @user.todos.find(params[:id])
     
-    if @todo.update_attributes(todo_params)
-      flash[:notice] = "Your to-do has been completed!"
-    else
-      flash[:error] = "An error occurred, please try again."
-    end
+    flash[:error] = "An error occurred, please try again." if !@todo.update_attributes(todo_params)
     
     respond_with(@todo) do |format|
-      format.html { redirect_to @user }
+      format.html { redirect_to root_path }
     end
   end
   
