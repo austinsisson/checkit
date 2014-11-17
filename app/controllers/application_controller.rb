@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     root_path
   end
   
+  def after_sign_up_path_for(resource)
+    flash[:notice] = "Check your email for a confirmation message to complete sign-up!"
+    root_path
+  end
   
   protected
     
