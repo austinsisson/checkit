@@ -14,7 +14,8 @@
 			<th>Complete To-Do</th>
 			<th>Remove</th>
 		</tr>
-		<% @user.todos.each do |todo| %>
+		<% @sorted_todos = @user.todos.sort { |a,b| a.created_at <=> b.created_at } %>
+		<% @sorted_todos.each do |todo| %>
 			<% if !todo.completed? %>
 			<tr>
 				<td id="todo-description-<%= todo.id %>"><%= todo.description %></td>
